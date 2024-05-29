@@ -10,7 +10,6 @@ const workerRegisterController = async (req: Request, res: Response) => {
         firstName,
         lastName,
         dni,
-        healthPlan,
         phone,
         email,
         password
@@ -19,7 +18,6 @@ const workerRegisterController = async (req: Request, res: Response) => {
     // validations    
     if(!firstName ) return res.status(400).json({msg: 'Por favor envíe su nombre.'});
     if(!lastName ) return res.status(400).json({msg: 'Por favor envíe su apellido.'});
-    console.log(dni)
     if(!dni ) return res.status(400).json({msg: 'Por favor envíe su dni.'});
     if(!email ) return res.status(400).json({msg: 'Por favor envíe su nombre correo.'});
     if(!password ) return res.status(400).json({msg: 'Por favor envíe su contraseña.'});
@@ -47,7 +45,6 @@ const workerRegisterController = async (req: Request, res: Response) => {
             firstName,
             lastName,
             dni,
-            healthPlan,
             phone,
             email,
             password: hash
@@ -62,7 +59,6 @@ const workerRegisterController = async (req: Request, res: Response) => {
             dni: savedWorker.dni,
             phone: savedWorker.phone,
             email: savedWorker.email,
-            healthPlan: savedWorker.healthPlan,
             active: savedWorker.active,
             role: savedWorker.role
         });

@@ -10,7 +10,6 @@ export interface IWorkerData extends Document {
     phone: string;
     email: string;
     password: string;
-    healthPlan: string;
     active: boolean;
     role: string;
 }
@@ -24,7 +23,6 @@ export interface IWorkerDataFromDB {
     phone: string;
     email: string;
     password: string;
-    healthPlan: string;
     active: boolean;
     role: string;
 }
@@ -59,7 +57,6 @@ export interface ITokenWorkerData {
     dni: string;
     phone: string;
     email: string;
-    healthPlan: string;
     active: boolean;
     role: string;
 }

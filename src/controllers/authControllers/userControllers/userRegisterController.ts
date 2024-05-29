@@ -10,7 +10,6 @@ const userRegisterController = async (req: Request, res: Response) => {
         firstName,
         lastName,
         dni,
-        healthPlan,
         phone,
         email,
         password
@@ -50,7 +49,6 @@ const userRegisterController = async (req: Request, res: Response) => {
             firstName,
             lastName,
             dni,
-            healthPlan,
             phone,
             email,
             password: hash
@@ -67,7 +65,6 @@ const userRegisterController = async (req: Request, res: Response) => {
             dni: savedUser.dni,
             phone: savedUser.phone,
             email: savedUser.email,
-            healthPlan: savedUser.healthPlan,
             active: savedUser.active,
             role: savedUser.role
         });

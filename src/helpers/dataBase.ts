@@ -6,13 +6,12 @@ const dataBase = async () => {
 
     const users = [
         {
-            firstName: 'Jorge',
-            lastName: 'Acosta',
-            dni: '23616110',
+            firstName: '1',
+            lastName: '1',
+            dni: '1',
             phone: '2646730581',
-            email: 'jorgeacostadeleon@yahoo.com',
-            password: '123456',
-            healtPlan: 'One',
+            email: '1@yahoo.com',
+            password: '123',
             active: true,
             role: 'user',
         },
@@ -59,6 +58,34 @@ const dataBase = async () => {
     const insertedWorkers:any = await WorkerModel.bulkCreate(hashedWorkers);
 
     console.log(insertedWorkers)
+
+    const admins = [
+        {
+            firstName: 'Jorge',
+            lastName: 'Acosta',
+            dni: '23616110',
+            phone: '2646730581',
+            email: 'jorgeacostadeleon@yahoo.com',
+            password: '123456',
+            healtPlan: 'One',
+            active: true,
+            role: 'admin',
+        },
+    ]
+
+
+    const hashedAdmins = await Promise.all(admins.map(async (admin) => {
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(admin.password, salt);
+        return {
+            ...admin,
+            password: hash
+        };
+    }));
+
+    const insertedAdmins:any = await UserModel.bulkCreate(hashedAdmins);
+    
+    console.log(insertedAdmins);
 
 };
 
