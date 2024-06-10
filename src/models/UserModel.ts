@@ -52,6 +52,12 @@ export class UserModel extends Model {
     defaultValue: 'user', // Valor por defecto para la columna 'role'
   })
   role!: string;
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    defaultValue: 'bosque', // Valor por defecto para la columna 'location'
+  })
+  location!: string;
 }
 
 
