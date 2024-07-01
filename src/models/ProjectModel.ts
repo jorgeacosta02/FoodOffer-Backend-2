@@ -7,8 +7,8 @@ import {
     DataType,
   } from 'sequelize-typescript';
   
-  @Table({ tableName: 'worker' })
-  export class WorkerModel extends Model {
+  @Table({ tableName: 'project' })
+  export class ProjectModel extends Model {
     @PrimaryKey
     @Default(DataType.UUIDV4)
     @Column({
@@ -19,35 +19,26 @@ import {
     id!: any;
   
     @Column
-    firstName!: string;
+    proposalDate!: string;
+
     @Column
-    lastName!: string;
-    @Column({
-      type: DataType.STRING, // Ajusta el tipo según lo que uses para DNI
-      allowNull: false,
-    })
-    dni!: string;
+    title!: string;
+ 
     @Column
-    phone!: string;
+    description!: string;
+
     @Column
-    email!: string;
+    startDate!: string;
+
     @Column
-    password!: string;
-    @Column
-    healthPlan!: string;
+    endDate!: string;
+
     @Column({
       type: DataType.BOOLEAN,
       allowNull: false,
       defaultValue: true, // Valor por defecto para la columna 'active'
     })
     active!: boolean;
-  
-    @Column({
-      type: DataType.STRING,
-      allowNull: false,
-      defaultValue: 'prof', // Valor por defecto para la columna 'role'
-    })
-    role!: string;
   }
   
   

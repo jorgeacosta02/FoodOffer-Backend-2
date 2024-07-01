@@ -1,4 +1,4 @@
-import { WorkerModel } from "../models/WorkerModel";
+import { WorkerModel } from "../models/ProjectModel";
 import { UserModel } from "../models/UserModel";
 import bcrypt from 'bcrypt';
 
@@ -11,9 +11,10 @@ const dataBase = async () => {
             dni: '1',
             phone: '2646730581',
             email: '1@yahoo.com',
-            password: '123',
+            password: '1',
             active: true,
-            role: 'user',
+            consortium: 'elbosque',
+            role: 'council',
         },
     ]
 
@@ -33,15 +34,15 @@ const dataBase = async () => {
 
     const workers = [
         {
-            firstName: 'Juan',
-            lastName: 'Acosta',
-            dni: '48858198',
+            firstName: '1',
+            lastName: '1',
+            dni: '1',
             phone: '2646730581',
-            email: 'juan@yahoo.com',
-            password: '123456',
-            healtPlan: 'One',
+            email: '1@yahoo.com',
+            password: '1',
             active: true,
-            role: 'prof',
+            consortium: 'elbosque',
+            role: 'council',
         },
     ]
 
@@ -61,14 +62,14 @@ const dataBase = async () => {
 
     const admins = [
         {
-            firstName: 'Jorge',
-            lastName: 'Acosta',
-            dni: '23616110',
+            firstName: '1',
+            lastName: '1',
+            dni: '1',
             phone: '2646730581',
-            email: 'jorgeacostadeleon@yahoo.com',
-            password: '123456',
-            healtPlan: 'One',
+            email: '1@yahoo.com',
+            password: '1',
             active: true,
+            consortium: 'admin',
             role: 'admin',
         },
     ]

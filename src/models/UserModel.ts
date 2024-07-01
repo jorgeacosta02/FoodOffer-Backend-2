@@ -17,13 +17,20 @@ export class UserModel extends Model {
     allowNull: false,
   })
   id!: any;
-
+  
   @Column
   firstName!: string;
-
+  
+    @Column({
+      type: DataType.STRING,
+      allowNull: false,
+      defaultValue: '', // Valor por defecto para la columna 'location'
+    })
+    consortium_Id!: string;
+  
   @Column
   lastName!: string;
-
+  
   @Column({
     type: DataType.STRING, // Ajusta el tipo según lo que uses para DNI
     allowNull: false,
@@ -37,7 +44,17 @@ export class UserModel extends Model {
   email!: string;
 
   @Column
+  plot!: string;
+
+  @Column
   password!: string;
+  
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    defaultValue: 'user', // Valor por defecto para la columna 'role'
+  })
+  role!: string;
 
   @Column({
     type: DataType.BOOLEAN,
@@ -45,19 +62,6 @@ export class UserModel extends Model {
     defaultValue: true, // Valor por defecto para la columna 'active'
   })
   active!: boolean;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-    defaultValue: 'user', // Valor por defecto para la columna 'role'
-  })
-  role!: string;
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-    defaultValue: 'bosque', // Valor por defecto para la columna 'location'
-  })
-  location!: string;
 }
 
 

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { WorkerModel } from "../../../models/WorkerModel";
+import { WorkerModel } from "../../../models/ProjectModel";
 import { IWorkerDataFromDB } from "../../../Interfaces/workerInterfaces";
 
 

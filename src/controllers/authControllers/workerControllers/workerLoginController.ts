@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { WorkerModel } from "../../../models/WorkerModel";
+import { WorkerModel } from "../../../models/ProjectModel";
 import bcrypt from 'bcrypt';
 import { createWorkerToken } from "../../../libs/jwt";
 import { ITokenWorkerData } from "../../../Interfaces/workerInterfaces";

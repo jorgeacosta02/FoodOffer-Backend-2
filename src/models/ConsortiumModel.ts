@@ -7,8 +7,8 @@ import {
     DataType,
   } from 'sequelize-typescript';
   
-  @Table({ tableName: 'appointment' })
-  export class AppointmentModel extends Model {
+  @Table({ tableName: 'consortium' })
+  export class ConsortiumModel extends Model {
     @PrimaryKey
     @Default(DataType.UUIDV4)
     @Column({
@@ -20,8 +20,16 @@ import {
   
     @Column
     name!: string;
+
     @Column
-    description!: string;
+    address!: string;
+
+    @Column({
+      type: DataType.BOOLEAN,
+      allowNull: false,
+      defaultValue: true, // Valor por defecto para la columna 'active'
+    })
+    active!: boolean;
   }
   
 

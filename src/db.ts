@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { UserModel } from './models/UserModel';
-import { WorkerModel } from './models/WorkerModel';
-import { AppointmentModel } from './models/AppointmentModel';
+import { WorkerModel } from './models/ProjectModel';
+import { AppointmentModel } from './models/ConsortiumModel';
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
