@@ -1,20 +1,23 @@
-import { WorkerModel } from "../models/ProjectModel";
+import { ConsortiumModel } from "../models/ConsortiumModel";
+import { MinuteModel } from "../models/MinuteModel";
+import { ProjectModel } from "../models/ProjectModel";
 import { UserModel } from "../models/UserModel";
 import bcrypt from 'bcrypt';
 
 const dataBase = async () => {
 
+    // Users
     const users = [
         {
-            firstName: '1',
-            lastName: '1',
+            firstName: 'admin',
+            lastName: 'admin',
             dni: '1',
             phone: '2646730581',
             email: '1@yahoo.com',
+            plot: '',
             password: '1',
+            role: 'admin',
             active: true,
-            consortium: 'elbosque',
-            role: 'council',
         },
     ]
 
@@ -32,61 +35,51 @@ const dataBase = async () => {
     
     console.log(insertedUsers);
 
-    const workers = [
+
+    // Consortiums
+    const consortiums = [
         {
-            firstName: '1',
-            lastName: '1',
-            dni: '1',
-            phone: '2646730581',
-            email: '1@yahoo.com',
-            password: '1',
+            name: 'c1',
+            address: 'address1',
             active: true,
-            consortium: 'elbosque',
-            role: 'council',
         },
     ]
 
-    const hashedWorkers = await Promise.all(workers.map(async (worker) => {
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(worker.password, salt);
-        return {
-            ...worker,
-            password: hash
-        };
-    }));
+    const insertedConsortiums:any = await ConsortiumModel.bulkCreate(consortiums);
+
+    console.log(insertedConsortiums)
 
 
-    const insertedWorkers:any = await WorkerModel.bulkCreate(hashedWorkers);
-
-    console.log(insertedWorkers)
-
-    const admins = [
+    // Projects
+    const projects = [
         {
-            firstName: '1',
-            lastName: '1',
-            dni: '1',
-            phone: '2646730581',
-            email: '1@yahoo.com',
-            password: '1',
+            proposalDate: '01-06-2024',
+            title: 'Proyect 1',
+            description: 'descripción 1',
+            startDate: '15-07-2024',
+            endDate: '20-07-2024',
             active: true,
-            consortium: 'admin',
-            role: 'admin',
         },
     ]
 
-
-    const hashedAdmins = await Promise.all(admins.map(async (admin) => {
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(admin.password, salt);
-        return {
-            ...admin,
-            password: hash
-        };
-    }));
-
-    const insertedAdmins:any = await UserModel.bulkCreate(hashedAdmins);
+    const insertedProjects:any = await ProjectModel.bulkCreate(projects);
     
-    console.log(insertedAdmins);
+    console.log(insertedProjects);
+
+
+    // Minutes
+    const minutes = [
+        {
+            date: '01-07-2024',
+            title: 'Acta 1',
+            text: 'texto del acta 1',
+            active: true,
+        },
+    ]
+
+    const insertedMinutes:any = await MinuteModel.bulkCreate(minutes);
+    
+    console.log(insertedMinutes);
 
 };
 

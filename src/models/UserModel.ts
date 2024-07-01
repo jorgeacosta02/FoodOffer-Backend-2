@@ -21,13 +21,6 @@ export class UserModel extends Model {
   @Column
   firstName!: string;
   
-    @Column({
-      type: DataType.STRING,
-      allowNull: false,
-      defaultValue: '', // Valor por defecto para la columna 'location'
-    })
-    consortium_Id!: string;
-  
   @Column
   lastName!: string;
   

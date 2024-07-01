@@ -1,7 +1,8 @@
 import { Sequelize } from 'sequelize-typescript';
 import { UserModel } from './models/UserModel';
-import { WorkerModel } from './models/ProjectModel';
-import { AppointmentModel } from './models/ConsortiumModel';
+import { ProjectModel } from './models/ProjectModel';
+import { ConsortiumModel } from './models/ConsortiumModel';
+import { MinuteModel } from './models/MinuteModel';
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
@@ -10,9 +11,10 @@ const sequelize = new Sequelize({
   password: 'admin',
   database: 'admin',
   models: [
+    ConsortiumModel,
     UserModel,
-    WorkerModel,
-    AppointmentModel
+    ProjectModel,
+    MinuteModel
   ],
   logging: false
   

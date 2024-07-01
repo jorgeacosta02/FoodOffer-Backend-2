@@ -1,5 +1,3 @@
-import { Document } from "mongoose";
-
 
 // Interface for saving user on db
 export interface IUserData extends Document {
@@ -9,9 +7,10 @@ export interface IUserData extends Document {
     dni: string;
     phone: string;
     email: string;
+    plot: string;
     password: string;
-    active: boolean;
     role: string;
+    active: boolean;
 }
 
 // Interface user from db
