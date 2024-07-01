@@ -2,9 +2,32 @@ import { ConsortiumModel } from "../models/ConsortiumModel";
 import { MinuteModel } from "../models/MinuteModel";
 import { ProjectModel } from "../models/ProjectModel";
 import { UserModel } from "../models/UserModel";
+import { ConsortiumUserModel } from "../models/ConsortiumUserModel";
 import bcrypt from 'bcrypt';
 
 const dataBase = async () => {
+    
+    
+        // Consortiums
+        const consortiums = [
+            {
+                name: 'c1',
+                address: 'address1',
+                active: true,
+            },
+            {
+                name: 'c2',
+                address: 'address2',
+                active: true,
+            },
+        ]
+    
+        const insertedConsortiums:any = await ConsortiumModel.bulkCreate(consortiums);
+    
+        console.log(insertedConsortiums);
+    
+        const consortiumsFromDB:any = await ConsortiumModel.findAll();
+
 
     // Users
     const users = [
@@ -17,6 +40,39 @@ const dataBase = async () => {
             plot: '',
             password: '1',
             role: 'admin',
+            active: true,
+        },
+        {
+            firstName: '2',
+            lastName: '2',
+            dni: '22',
+            phone: '2222',
+            email: '2@yahoo.com',
+            plot: '2',
+            password: '2',
+            role: 'user',
+            active: true,
+        },
+        {
+            firstName: '3',
+            lastName: '3',
+            dni: '33',
+            phone: '3333',
+            email: '3@yahoo.com',
+            plot: '1',
+            password: '3',
+            role: 'user',
+            active: true,
+        },
+        {
+            firstName: '4',
+            lastName: '4',
+            dni: '44',
+            phone: '4444',
+            email: '4@yahoo.com',
+            plot: '4',
+            password: '4',
+            role: 'user',
             active: true,
         },
     ]
@@ -36,20 +92,22 @@ const dataBase = async () => {
     console.log(insertedUsers);
 
 
-    // Consortiums
-    const consortiums = [
-        {
-            name: 'c1',
-            address: 'address1',
-            active: true,
-        },
-    ]
+    // Associate users with consortiums
+    const consortiumUserAssociationsOne = insertedUsers.slice(0,2).map((user: any) => ({
+        consortiumId: consortiumsFromDB[0].id,
+        userId: user.id,
+    }));
 
-    const insertedConsortiums:any = await ConsortiumModel.bulkCreate(consortiums);
+    const insertedConsortiumUsersOne: any = await ConsortiumUserModel.bulkCreate(consortiumUserAssociationsOne);
+    console.log(insertedConsortiumUsersOne);
 
-    console.log(insertedConsortiums);
+    const consortiumUserAssociationsTwo = insertedUsers.slice(2).map((user: any) => ({
+        consortiumId: consortiumsFromDB[1].id,
+        userId: user.id,
+    }));
 
-    const consortiumsFromDB:any = await ConsortiumModel.findAll();
+    const insertedConsortiumUsersTwo: any = await ConsortiumUserModel.bulkCreate(consortiumUserAssociationsTwo);
+    console.log(insertedConsortiumUsersTwo);
 
 
     // Projects
@@ -81,9 +139,9 @@ const dataBase = async () => {
         },
     ]
 
-    // const insertedMinutes:any = await MinuteModel.bulkCreate(minutes);
+    const insertedMinutes:any = await MinuteModel.bulkCreate(minutes);
     
-    // console.log(insertedMinutes);
+    console.log(insertedMinutes);
 
 };
 
