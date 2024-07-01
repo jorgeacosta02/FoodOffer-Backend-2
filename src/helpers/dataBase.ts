@@ -49,7 +49,7 @@ const dataBase = async () => {
 
     console.log(insertedConsortiums);
 
-    // const consortiumsFromDB:any = await
+    const consortiumsFromDB:any = await ConsortiumModel.findAll();
 
 
     // Projects
@@ -60,14 +60,14 @@ const dataBase = async () => {
             description: 'descripción 1',
             startDate: '15-07-2024',
             endDate: '20-07-2024',
-            consortiumId: '',
+            consortiumId: consortiumsFromDB[0].id,
             active: true,
         },
     ]
 
-    // const insertedProjects:any = await ProjectModel.bulkCreate(projects);
+    const insertedProjects:any = await ProjectModel.bulkCreate(projects);
     
-    // console.log(insertedProjects);
+    console.log(insertedProjects);
 
 
     // Minutes
@@ -76,6 +76,7 @@ const dataBase = async () => {
             date: '01-07-2024',
             title: 'Acta 1',
             text: 'texto del acta 1',
+            consortiumId: consortiumsFromDB[0].id,
             active: true,
         },
     ]

@@ -7,6 +7,7 @@ import { userAuthRequired } from '../middlewares/userValidate.token'
 import consortiumRegisterController from '../controllers/authControllers/consortiumControllers/consortiumRegisterController';
 import projectRegisterController from '../controllers/authControllers/projectControllers/projectRegisterController';
 import minuteRegisterController from '../controllers/authControllers/minutesContrllers/minuteRegisterController';
+import consortiumGetAllController from '../controllers/authControllers/consortiumControllers/consortiumGetAllController';
 
 
 const authRoutes = Router();
@@ -19,6 +20,7 @@ authRoutes.get('/user-profile', userAuthRequired, userProfileController);
 
 // ConsortiumRoutes
 authRoutes.post('/consortium-register', consortiumRegisterController);
+authRoutes.get('/consortium-get-all', consortiumGetAllController);
 
 // ProjectRoutes
 authRoutes.post('/project-register', projectRegisterController);
